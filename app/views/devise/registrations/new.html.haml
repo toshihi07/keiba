@@ -1,0 +1,44 @@
+= render "./layouts/header"
+.container
+  .main-top
+    会員情報入力
+  .main-bottom
+    -# = form_with model: @user, :url => {:action => :create}, local: true, class: 'form' do |f|
+    = form_for @user,url:{controller:'users/registrations',action:'create'} , html: {class: "form"} do |f|
+      .nickname
+        = f.label :nickname, "ニックネーム", class: "nickname__label"
+        %span.nickname__required
+          必須
+        .nickname__notation
+          - if @validate_error
+            - @user.errors[:nickname].each do |notation|
+              = notation
+        = f.text_field :nickname, class: 'nickname__text', placeholder: '例)メルカリ太郎'
+      .form-box
+        = f.label :email, "メールアドレス", class:'form-box__label'
+        %span.form-box__required
+          必須
+        .form-box__notation
+          - if @validate_error
+            = @user.errors[:email][1]
+        = f.email_field :email, class: 'form-box__text', placeholder: 'PC・携帯どちらでも可'
+      - if session["devise.sns_id"].blank?
+        .form-box
+          = f.label :password, "パスワード", class: 'form-box__label'
+          %span.form-box__required
+            必須
+          .form-box__notation
+          - if @validate_error
+            - @user.errors[:password][1]
+          = f.password_field :password, class: 'form-box__text', placeholder: '7文字以上'
+          .form-box
+          = f.label :password_confirmation, "パスワード(確認)", class: 'form-box__label'
+          %span.form-box__required
+            必須
+          .form-box__notation
+            - if @validate_error
+              - @user.errors[:password][1]
+          = f.password_field :password_confirmation, class: 'form-box__text', placeholder: '7文字以上'
+      - else
+        = f.hidden_field :password
+        = f.hidden_field :password_confirmation

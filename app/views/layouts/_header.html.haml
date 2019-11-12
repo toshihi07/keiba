@@ -1,0 +1,19 @@
+.header
+  .container.d-flex.align-items-center
+    %h1.mr-auto UMAUMA
+    %p.mx-3
+      = link_to "新規登録 / ログイン", new_mypage_path
+.nav-border
+  .nav-inner
+    %ul.nav
+      %li.nav-item
+        %a.nav-link.active{href: root_path} Top
+      %li.nav-item
+        %a.nav-link{href: "#"} レース
+      %li.nav-item
+        %a.nav-link{href: "#"} 予想
+      %li.nav-iem
+        %a.nav-link{href: management_index_path} 収支管理ツール
+      %li.nav-item.right
+        %a.nav-link.active{href: "mypage/show"} マイページ
+

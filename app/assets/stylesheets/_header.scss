@@ -1,0 +1,35 @@
+.header{
+  // display: flex;
+  // justify-content: flex-start;
+  height: 70px;
+  width: 100%;
+  background-color: white;
+  margin: 0;
+  .container {
+    width: 60%;
+    display: flex;
+  }
+  h1{
+    // justify-content: flex-start;
+    font-size: 30px;
+    text-align: center;
+    line-height: 70px;
+  }
+  p:hover{
+    color: orange;
+    cursor: pointer;
+    }
+  }
+.nav-border{
+  background-color: #02720D;
+  .nav-inner{
+    width: 60%;
+    margin: 0 auto;
+    a{
+      color:white;
+    }
+    .right{
+      margin-left: auto;
+    }
+  }
+}
