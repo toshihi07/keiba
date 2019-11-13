@@ -2,7 +2,15 @@
   .container.d-flex.align-items-center
     %h1.mr-auto UMAUMA
     %p.mx-3
-      = link_to "新規登録 / ログイン", new_mypage_path
+    - if user_signed_in?
+      = link_to "#{current_user.nickname}さん", mypage_path(current_user.id)
+    .login
+      - unless user_signed_in?
+        .not_login
+          = link_to "ログイン/新規登録", new_user_session_path, class:"login"
+      - else
+        .log_in
+          = link_to"ログアウト", destroy_user_session_path, method: :delete, class:"logout"
 .nav-border
   .nav-inner
     %ul.nav
@@ -15,5 +23,7 @@
       %li.nav-iem
         %a.nav-link{href: management_index_path} 収支管理ツール
       %li.nav-item.right
-        %a.nav-link.active{href: "mypage/show"} マイページ
+        = link_to "マイページ", mypage_path(current_user.id),class: "nav-link"
+
+        
 
