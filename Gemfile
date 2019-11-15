@@ -68,5 +68,9 @@ gem 'jquery-rails'
 gem "devise"
 gem "font-awesome-rails"
 gem 'jquery-rails'
+gem 'ancestry'
+gem "carrierwave"
+gem 'fog-aws'
+gem 'mini_magick'
 
 

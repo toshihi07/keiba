@@ -15,6 +15,6 @@
         %br/
         = f.password_field :password, class: "form-control", autocomplete: "off", placeholder: "パスワードを入力してください"
       .form-group.text-center
-        = f.submit "ログインする", class: "loginBtn"
+        = f.submit "ログインする",new_user_session_path, class: "loginBtn"
 
 = render "devise/shared/links"
