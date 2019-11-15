@@ -12,6 +12,12 @@
           - @user.errors[:nickname].each do |notation|
             = notation
       = f.text_field :nickname, class: 'textbox', placeholder: '例) 羽生まこ'
+    .image-form.field.pt-3
+      = f.label :avatar, "アバター画像選択", class: "avatar__label"
+      %span.required
+        任意
+      .file-box
+        = f.file_field :avatar,class:'avatar-box pl-4'
     .email.pt-3
       = f.label :email, "メールアドレス", class: "email__label "
       %span.required

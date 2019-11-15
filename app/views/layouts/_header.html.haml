@@ -3,6 +3,7 @@
     %h1.mr-auto UMAUMA
     %p.mx-3
     - if user_signed_in?
+      -# = image_tag current_user.avatar,class:"img-thumbnail"
       = link_to "#{current_user.nickname}さん", mypage_path(current_user.id)
     .login.mx-3
       - unless user_signed_in?
