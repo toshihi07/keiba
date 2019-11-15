@@ -1,0 +1,23 @@
+= render "./layouts/header"
+.container.text-center.registration-form.mt-5
+  .betting-top.pt-3
+    %h1.border-bottom.pb-3 馬券情報入力
+  .betting-main
+    = form_with model: @bettings,scope: "bettings", url: bettings_path,local: true do |f|
+      .race_date.pt-3
+        = f.date_select(:when,use_month_numbers: true,start_year: 2015,end_year: Time.now.year,date_separator: '/')
+      .race_course.pt-3
+        = f.select :race_course_id, RaceCourse.all.collect{|p|[p.name,p.id]}, {prompt: "競馬場"}, class:"select-box"
+      .race_number.pt-3
+        = f.select :race_number_id,RaceNumber.all.collect{|p|[p.number,p.id]}, {prompt: "レース番号"}, class:"select-box"
+      .rece_name.pt-3
+        = f.text_field :race_name,class:"text-box "
+      .category.pt-3
+        = f.select :category_id,Category.all.collect{|p|[p.name,p.id]}, {prompt: "式別"}, class:"select-box"
+      .horse_number.pt-3
+        = f.select :horse_number,HorseNumber.all.collect{|p|[p.number,p.id]}, {prompt: "馬番"}, class:"select-box"
+      .invetment.pt-3
+        = f.text_field :investment ,class: 'text-box'
+      .inner-box__center.py-3
+        = f.submit "クリア", class: "betting_button mx-2"
+        = f.submit "登録", class: "betting_button mx-2"

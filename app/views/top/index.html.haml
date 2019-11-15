@@ -4,13 +4,16 @@
     .border-bottom.mt-3.pb-2 
       %h3 今週の重賞
     .main-race-card.mt-2
-      .text-area.left
-        %span 秋の女王決定戦
-        %h2 エリザベス情報杯
-        %p 11月10日(日) 京都11R 芝2200M 発走時刻 15:40
-      .text-area.right
-        %p 出馬表
-        %p 掲示板
+      .text-area.d-flex
+        .left
+          %span 秋の女王決定戦
+          %h2 エリザベス情報杯
+          %p 11月10日(日) 京都11R 芝2200M 発走時刻 15:40
+        .right
+          %p.btn.btn-success.text-white.mx-3
+            = link_to "出馬表",{href: "http://www.jra.go.jp/JRADB/accessS.html", role: "button"}
+          %p.btn.btn-success.text-white
+            = link_to "掲示板",{href: "#", role: "button"}
       #carousel-1.carousel.slide
         %ol.carousel-indicators
           %li.active{"data-slide-to" => "0", "data-target" => "#carousel-1"}
@@ -29,15 +32,35 @@
             %p Nulla vitae elit libero, a pharetra augue mollis interdum.
           .carousel-item
             = image_tag "deep.jpg", class: "d-block w-100"
-          .carousel-caption.d-none.d-md-block
-            %h1 First slide label
-            %p Nulla vitae elit libero, a pharetra augue mollis interdum.
         %a.carousel-control-prev{"data-slide" => "prev", href: "#carousel-1", role: "button"}
           %span.carousel-control-prev-icon{"aria-hidden" => "true"}
           %span.sr-only Previous
         %a.carousel-control-next{"data-slide" => "next", href: "#carousel-1", role: "button"}
           %span.carousel-control-next-icon{"aria-hidden" => "true"}
           %span.sr-only Next
+    .sub-rabe
+      .media.mt-3
+        .media-link
+          .btn.btn-success.text-white.mx-3
+            = link_to "出馬表",{href: "http://www.jra.go.jp/JRADB/accessS.html", role: "button"}
+          .btn.btn-success.text-white.mx-3
+            = link_to "掲示板",{href: "#", role: "button"}
+        .media-body
+          %p.mt-2 翌年のクラシックへ重要な一戦
+          %h2.mt-2  東京スポーツ杯歳ステークス
+          %p.mt-2  11月16日(土) 東京 芝1800m
+        = image_tag"armond.jpg",class:"align-self-center img-fluid"
+      .media.mt-3
+        .media-link
+          .btn.btn-success.text-white.mx-3
+            = link_to "出馬表",{href: "http://www.jra.go.jp/JRADB/accessS.html", role: "button"}
+          .btn.btn-success.text-white.mx-3
+            = link_to "掲示板",{href: "#", role: "button"}
+        .media-body
+          %p.mt-2 翌年のクラシックへ重要な一戦
+          %h2.mt-2  東京スポーツ杯歳ステークス
+          %p.mt-2  11月16日(土) 東京 芝1800m
+        = image_tag"armond.jpg",class:"align-self-center img-fluid"
     .border-bottom.mt-5.pb-2 
       %h3 管理人予想
     .card-deck

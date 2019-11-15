@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   root 'top#index'
   resources :mypage, only: [:show,:edit]
   resources :members, only: [:new, :create] 
-  resources :betting, only: [:new]
+  resources :bettings, only: [:new, :create]
   resources :years, only: [:show] do
     resources :months, only: [:show] do
       resources :categories2, only: [:index] do

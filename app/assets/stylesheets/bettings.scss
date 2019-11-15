@@ -1,3 +1,33 @@
 // Place all the styles related to the bettings controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.betting-top{
+
+}
+.betting-main{
+  .select-box{
+    height: 30px;
+    width: 20%;
+  }
+  #bettings_when_1i{
+    height:30px;
+    width: 10%;
+    margin: 0 5px;
+  }
+  #bettings_when_2i{
+    height:30px;
+    width: 7%;
+    margin: 0 5px;
+  }
+  #bettings_when_3i{
+    height:30px;
+    width: 7%;
+    margin: 0 5px;
+  }
+  .betting_button{
+    width: 8%;
+    &:hover{
+      cursor: pointer;
+    }
+  }
+}
