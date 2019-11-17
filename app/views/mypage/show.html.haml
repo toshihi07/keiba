@@ -9,8 +9,7 @@
       マイページ
       %br/
       %small
-        = current_user.name
-        さん、こんにちは！
+        = link_to "編集ページへ",url:edit_mypage_path
   %p
     マイページでは学習進捗を確認できます。
     %br/

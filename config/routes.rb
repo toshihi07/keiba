@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
   }
   root 'top#index'
-  resources :mypage, only: [:show,:edit]
+  resources :mypage, only: [:show,:edit,:update]
   resources :members, only: [:new, :create] 
   resources :bettings, only: [:new, :create]
   resources :years, only: [:show] do
@@ -17,7 +17,6 @@ Rails.application.routes.draw do
   end
   get 'top/index'
   get '/logout', to: 'mypage#logout'
-  resources :management, only: [:new,:index,:create]
 
 end
 
