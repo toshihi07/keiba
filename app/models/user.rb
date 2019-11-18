@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :bettings
+  has_many :posts
   mount_uploader :avatar, AvatarUploader
   has_one_attached :avatar
 end

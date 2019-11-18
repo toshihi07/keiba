@@ -1,0 +1,49 @@
+= render "./layouts/header"
+
+.container
+  .race-group-top.bg-primary.text-white.mt-3.text-center
+    %h1 レース予想掲示板
+  .race-group-main.mt-3
+    .race-group-main__header
+      %h1.pl-3 エリザベス女王杯(2019)掲示板/投稿数(件)
+    .border.mt-3
+      .race-group-container
+        .text-center
+          %h3 投稿する
+          = form_with model:@newpost, url: "race_groups/1/posts" do |f|
+            %p 予想
+            %p= f.text_field :prediction
+            %p 本文
+            %p= f.text_area :body
+            = f.hidden_field :race_group_id
+            = f.submit
+        .post-index
+          .post-index__user-data
+            ゲストさん
+          .post-index__prediction
+            アーモンドアイ
+          .post-index__body
+            成長力あるスティ産駒来年も活躍期待ジョッキーはまた福永でここまでインディの特徴を一番知ってるからね池添もアドバイスあったから勝てたんだし
+          .post-index__footer.border-bottom
+            いいね 返信 通報
+        .post-index
+          .post-index__user-data
+            ゲストさん
+          .post-index__prediction
+            アーモンドアイ
+          .post-index__body
+            成長力あるスティ産駒来年も活躍期待ジョッキーはまた福永でここまでインディの特徴を一番知ってるからね池添もアドバイスあったから勝てたんだし
+          .post-index__footer.border-bottom
+            いいね 返信 通報
+        .post-index
+          .post-index__user-data
+            ゲストさん
+          .post-index__prediction
+            アーモンドアイ
+          .post-index__body
+            成長力あるスティ産駒来年も活躍期待ジョッキーはまた福永でここまでインディの特徴を一番知ってるからね池添もアドバイスあったから勝てたんだし
+          .post-index__footer.border-bottom
+            いいね 返信 通報
+
+
+
