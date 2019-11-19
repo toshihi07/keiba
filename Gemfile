@@ -74,3 +74,6 @@ gem 'fog-aws'
 gem 'mini_magick'
 gem 'rails_admin', '~> 2.0.0.beta'
 gem 'cancancan'
+#画像アップロードのためのgem
+gem 'carrierwave'
+gem 'mini_magick'

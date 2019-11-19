@@ -21,7 +21,7 @@ end
   end
 
   def post_params
-    params.require(:post).permit(:prediction, :body).merge(user_id: current_user.id)
+    params.require(:post).permit(:prediction, :body).merge(user_id: current_user.id,race_group_id: params[:race_group_id])
   end
 
 end

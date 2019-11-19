@@ -12,10 +12,10 @@
           %h3 投稿する
           = form_with(model: @post, url:race_group_posts_path ,local: true) do |f|
             %p 予想
-            %p= f.text_field :prediction
+            = f.text_field :prediction
             %p 本文
-            %p= f.text_area :body
-            = f.submit
+            = f.text_area :body
+            = f.submit class: 'button'
         .post-index
           - @posts.each do |post|
             .post-index__user-data

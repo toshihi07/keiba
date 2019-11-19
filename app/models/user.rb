@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :bettings
   has_many :posts
+  has_many :articles
   mount_uploader :avatar, AvatarUploader
   has_one_attached :avatar
 end
