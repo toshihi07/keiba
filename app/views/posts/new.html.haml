@@ -13,10 +13,11 @@
           = form_with(model: @post, url:race_group_posts_path ,local: true) do |f|
             %p 予想
             = f.text_field :prediction
+            .article-body
             %p 本文
             = f.text_area :body
-            = f.submit class: 'button'
-        .post-index
+            = f.submit
+        .post-index.mt-5
           - @posts.each do |post|
             .post-index__user-data
               = post.user.nickname

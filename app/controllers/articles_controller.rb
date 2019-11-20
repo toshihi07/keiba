@@ -3,6 +3,7 @@ class ArticlesController < ApplicationController
   before_action :authenticate_user!, except: [:index,:show]
 
   def index
+    @articles = Article.all.includes(:article_images).limit(10).order("created_at DESC")
   end
 
   def new
@@ -11,7 +12,12 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
+    if @article.save
+      redirect_to root_path
+    else
+      redirect_to '/articles/new'
   end
+end
   
   private
   
@@ -20,7 +26,7 @@ class ArticlesController < ApplicationController
   end
   
   def article_params
-    params.require(:article).permit(:title, :body,article_images_attributes:[:id,:image])
+    params.require(:article).permit(:title, :body,article_images_attributes:[:id,:image]).merge(user_id: current_user.id)
   end
 
 end

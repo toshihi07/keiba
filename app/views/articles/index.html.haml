@@ -1,0 +1,21 @@
+= render "./layouts/header"
+.d-flex.align-items-center.mt-3
+  %h1 投稿一覧
+%table.table.table-bordered.border-primary.table-hover.table-sm.articles_table
+  %thead
+    %tr
+      %th{scope: "col", style: "width: 40px"} No.
+      %th{scope: "col", style: "width: 700px"} 投稿タイトル
+      %th{scope: "col"} 投稿者
+      %th{scope: "col"} 投稿日
+      %th{scope: "col"} 更新日時
+  %tbody
+    　　　
+    / 追加
+    - @articles.each do |article|
+      %tr
+        %th= article.id
+        %td= article.title
+        %td= article.body
+        %td= article.created_at
+        %td= article.updated_at

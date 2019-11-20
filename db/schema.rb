@@ -35,17 +35,19 @@ ActiveRecord::Schema.define(version: 2019_11_19_055956) do
 
   create_table "article_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "image"
-    t.bigint "post_id_id"
+    t.bigint "article_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["post_id_id"], name: "index_article_images_on_post_id_id"
+    t.index ["article_id"], name: "index_article_images_on_article_id"
   end
 
   create_table "articles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "title"
     t.text "body"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_articles_on_user_id"
   end
 
   create_table "bettings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
