@@ -6,12 +6,17 @@ class ArticlesController < ApplicationController
     @articles = Article.all.includes(:article_images).limit(10).order("created_at DESC")
   end
 
+  def show
+    @article = Article.find(params[:id])
+  end
+
   def new
     @article = Article.new
   end
 
   def create
     @article = Article.new(article_params)
+    3.times { @article.article_images.build }
     if @article.save
       redirect_to root_path
     else

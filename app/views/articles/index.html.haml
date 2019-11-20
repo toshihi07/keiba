@@ -16,6 +16,6 @@
       %tr
         %th= article.id
         %td= article.title
-        %td= article.body
-        %td= article.created_at
-        %td= article.updated_at
+        %td= article.user.nickname
+        %td= article.created_at.strftime('%Y/%m/%d')
+        %td= article.updated_at.strftime('%Y/%m/%d')

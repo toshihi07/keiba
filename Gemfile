@@ -64,7 +64,6 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'haml-rails'
 gem 'erb2haml'
-gem 'jquery-rails'
 gem "devise"
 gem "font-awesome-rails"
 gem 'jquery-rails'
@@ -74,6 +73,3 @@ gem 'fog-aws'
 gem 'mini_magick'
 gem 'rails_admin', '~> 2.0.0.beta'
 gem 'cancancan'
-#画像アップロードのためのgem
-gem 'carrierwave'
-gem 'mini_magick'

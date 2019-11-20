@@ -15,7 +15,7 @@
           %p.btn.btn-success.text-white
             = link_to "掲示板", "/race_groups/1/posts/new"
       #carousel-1.carousel.slide
-        %ol.carousel-indicators
+        %ol.carousel-indicators@main_race_group.id
           %li.active{"data-slide-to" => "0", "data-target" => "#carousel-1"}
           %li{"data-slide-to" => "1", "data-target" => "#carousel-1"}
           %li{"data-slide-to" => "2", "data-target" => "#carousel-1"}
@@ -42,57 +42,41 @@
       .media.mt-3
         .media-link
           .btn.btn-success.text-white.mx-3
-            = link_to "出馬表",{href: "http://www.jra.go.jp/JRADB/accessS.html", role: "button"}
+            = link_to "出馬表",href: "http://www.jra.go.jp/JRADB/accessS.html", role: "button"
           .btn.btn-success.text-white.mx-3
-            = link_to "掲示板",{href: "#", role: "button"}
+            = link_to "掲示板", "/race_groups/2/posts/new", role: "button"
         .media-body
           %p.mt-2 翌年のクラシックへ重要な一戦
-          %h2.mt-2  東京スポーツ杯歳ステークス
+          %h2.mt-2  東京スポーツ杯2歳ステークス
           %p.mt-2  11月16日(土) 東京 芝1800m
         = image_tag"armond.jpg",class:"align-self-center img-fluid"
       .media.mt-3
         .media-link
           .btn.btn-success.text-white.mx-3
-            = link_to "出馬表",{href: "http://www.jra.go.jp/JRADB/accessS.html", role: "button"}
+            = link_to "出馬表",href: "http://www.jra.go.jp/JRADB/accessS.html", role: "button"
           .btn.btn-success.text-white.mx-3
-            = link_to "掲示板",{href: "#", role: "button"}
+            = link_to "掲示板", "/race_groups/3/posts/new", role: "button"
         .media-body
           %p.mt-2 翌年のクラシックへ重要な一戦
-          %h2.mt-2  東京スポーツ杯歳ステークス
+          %h2.mt-2  東京スポーツ杯2歳ステークス
           %p.mt-2  11月16日(土) 東京 芝1800m
         = image_tag"armond.jpg",class:"align-self-center img-fluid"
     .border-bottom.mt-5.pb-2 
       %h3 管理人予想
-    .card-deck
-      .card-list.row
-        .col-sm-6.pt-3
-          .card.expectation
-            =image_tag "kurono.jpg",class:"card-img-top"
+    .card-deck.mb-5
+      .card-list.row.pt-3
+        - @articles.each do |article|
+          .card.col-6.p-0
+            .card-image
+              =image_tag article.article_images[0].image.url,class:"card-img-top"
             .card-body
-              %h5.card-title エリザベス女王杯の結果
-              %p.card-text Some quick example text to build on the card title and make up the bulk of the card's content.
-              %a.btn.btn-primary{href: "#"} 記事を読む
-        .col-sm-6.pt-3
-          .card.result
-            =image_tag "kurono.jpg",class:"card-img-top"
-            .card-body
-              %h5.card-title エリザベス女王杯の予想
-              %p.card-text Some quick example text to build on the card title and make up the bulk of the card's content.
-              %a.btn.btn-primary{href: "#"} 記事を読む
-        .col-sm-6.pt-3
-          .card.expectation
-            =image_tag "kurono.jpg",class:"card-img-top"
-            .card-body
-              %h5.card-title エリザベス女王杯の結果
-              %p.card-text Some quick example text to build on the card title and make up the bulk of the card's content.
-              %a.btn.btn-primary{href: "#"} 記事を読む
-        .col-sm-6.pt-3
-          .card.expectation
-            =image_tag "kurono.jpg",class:"card-img-top"
-            .card-body
-              %h5.card-title エリザベス女王杯の結果
-              %p.card-text Some quick example text to build on the card title and make up the bulk of the card's content.
-              %a.btn.btn-primary{href: "#"} 記事を読む
+              %h2.card-title
+                = article.title
+              %p.card-text
+                = article.body.truncate(100)
+              %a.btn.btn-primary{href: "/articles/#{article.id}"} 記事を読む
+          
+
 
 
 
