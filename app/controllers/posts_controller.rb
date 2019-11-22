@@ -4,18 +4,21 @@ before_action :set_group
   def new
     @post = Post.new
     @posts = Post.all.limit(10).order("created_at DESC")
-    @posts_length = Post.all
+    @posts_length = @race_group.posts
   end
 
   def create
-    # binding.pry
     @post = Post.new(post_params)
-    if  @post.save
-    redirect_to top_index_path
-    else
-      render :new
+    respond_to do |format|
+      if @post.save
+      # format.html { redirect_to "/race_groups/#{@race_group.id}/posts/new"}
+      format.json 
+        end
+      else
+      flash.now[:alert] = 'メッセージを入力してください。'
+    end
   end
-end
+
   private
 
   def set_group

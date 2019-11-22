@@ -10,18 +10,18 @@
     .border.mt-3
       .race-group-container
         .text-center
-          %h3 投稿する
-          = form_with(model: @post, url:race_group_posts_path ,local: true) do |f|
+          %h3.m-2 投稿する
+          = form_with(model: @post, url:race_group_posts_path,id: "new_post") do |f|
             %p 予想
-            = f.text_field :prediction
+            = f.text_field :prediction,class:"m-2"
             .article-body
             %p 本文
-            = f.text_area :body
-            = f.submit
+            = f.text_area :body,class:"body-input my-2",placeholder:"コメントする"
+            = f.submit "投稿する", class: 'button'
         .post-index.mt-5
           - @posts.each do |post|
             .post-index__user-data
-              = post.user.nickname
+              = "#{post.user.nickname}さん"
             .post-index__prediction
               = post.prediction
             .post-index__body

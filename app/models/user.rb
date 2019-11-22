@@ -7,6 +7,11 @@ class User < ApplicationRecord
   has_many :bettings
   has_many :posts
   has_many :articles
-  mount_uploader :avatar, AvatarUploader
+  # mount_uploader :avatar, AvatarUploader
   has_one_attached :avatar
+
+  validates :email, presence: true
+  validates :password, presence: true
+  validates :nickname, presence: true
+  validates :avatar, presence: true
 end
