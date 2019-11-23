@@ -5,21 +5,23 @@
     %h1 レース予想掲示板
   .race-group-main.mt-3
     .race-group-main__header
-      %h1.pl-3 エリザベス女王杯(2019)掲示板/投稿数(件)
+      %h1#post_count.pl-3 
+        = "#{@race_group.name}(#{@race_group.year})掲示板/投稿数(#{@posts_length.count}件)"
     .border.mt-3
       .race-group-container
         .text-center
-          %h3 投稿する
-          = form_with(model: @post, url:race_group_posts_path ,local: true) do |f|
+          %h3.m-2 投稿する
+          = form_with(model: @post, url:race_group_posts_path,id: "new_post") do |f|
             %p 予想
-            %p= f.text_field :prediction
+            = f.text_field :prediction,class:"m-2"
+            .article-body
             %p 本文
-            %p= f.text_area :body
-            = f.submit
-        .post-index
+            = f.text_area :body,class:"body-input my-2",placeholder:"コメントする"
+            = f.submit "投稿する", class: 'button'
+        .post-index.mt-5
           - @posts.each do |post|
             .post-index__user-data
-              = post.user.nickname
+              = "#{post.user.nickname}さん"
             .post-index__prediction
               = post.prediction
             .post-index__body

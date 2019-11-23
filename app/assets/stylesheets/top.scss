@@ -31,6 +31,16 @@
     }
   }
   .card-deck{
+    h2{
+      font-size: 1.2rem;
+    }
+    p{
+      font-size: 1rem;
+    }
+    .card-img-top{
+      height: 180px;
+      width: 100%;
+  }
     .card-body{
     background-color: #F5f5f5;
     }

@@ -5,7 +5,8 @@
     %h1 レース予想掲示板
   .race-group-main.mt-3
     .race-group-main__header
-      %h1.pl-3 エリザベス女王杯(2019)掲示板/投稿数(件)
+      %h1.pl-3 
+        = "#{@race_group.name}(#{@race_group.year})掲示板/投稿数(#{@posts.count}件)"
     .border.mt-3
       .race-group-container
         .text-center

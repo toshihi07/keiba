@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :mypage, only: [:show,:edit,:update]
   resources :members, only: [:new, :create] 
   resources :bettings, only: [:new, :create]
+  resources :articles, only: [:new,:create,:index,:show] 
   resources :race_groups, only: [:index,:show,:new, :create, :edit, :update] do
     resources :posts, only: [:new,:create]
   end

@@ -4,16 +4,23 @@ before_action :set_group
   def new
     @post = Post.new
     @posts = Post.all.limit(10).order("created_at DESC")
+    @posts_length = @race_group.posts
   end
 
   def create
+    # binding.pry
     @post = Post.new(post_params)
-    if  @post.save
-    redirect_to top_index_path
-    else
-      render :new
+    @posts_length = @race_group.posts
+    respond_to do |format|
+      if @post.save
+      # format.html { redirect_to "/race_groups/#{@race_group.id}/posts/new"}
+      format.json 
+        end
+      else
+      flash.now[:alert] = 'メッセージを入力してください。'
+    end
   end
-end
+
   private
 
   def set_group
@@ -21,7 +28,7 @@ end
   end
 
   def post_params
-    params.require(:post).permit(:prediction, :body).merge(user_id: current_user.id)
+    params.require(:post).permit(:prediction, :body).merge(user_id: current_user.id,race_group_id: params[:race_group_id])
   end
 
 end

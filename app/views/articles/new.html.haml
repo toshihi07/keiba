@@ -1,0 +1,45 @@
+.container.mt-5
+  .d-flex.align-items-center
+    %h1 画像
+    .ml-auto.articles_button
+      %a.btn.btn-outline-info{href:  "/articles"} 投稿一覧
+  = form_with(model: @article, url:"/articles" ,method: :post,local: true) do |f|
+    .form-group
+      = f.fields_for :article_images do |fi|
+        .file-content
+          .setimage
+          = fi.file_field :image, class: "file-upload"  
+    .form-group
+      = f.label :title, '投稿タイトル'
+      = f.text_field :title, class: 'form-control'
+      %small#title-tip.form-text.text-muted
+        タイトルを入力してください。
+    .form-group
+      = f.label :body, '投稿内容'
+      = f.text_area :body, class: 'form-control', rows:10
+      %small.form-text.text-muted{:id => "body-tip\""}
+        投稿内容を入力してください。
+    = f.submit '投稿', class: 'btn btn-info btn-block'
+    %small#submit-tip.form-text.text-muted
+      投稿する前に投稿内容を見直してください!
+
+
+
+
+-# .container.mt-5
+-#   %h1 新しい投稿
+-#   = form_with(model: @article, url:"/articles/#{current_user.id}" ,local: true) do |f|
+-#     = f.label :title, "タイトル"
+-#     %br/
+-#     = f.text_field :title
+-#     %p
+-#     = f.label :body, "内容"
+-#     %br/
+-#     = f.text_area :body, cols: 60, rows: 8
+-#     .file-field-box
+-#       = f.fields_for :item_images do |fi|
+-#         .file-content
+-#           .setimage
+-#           = fi.file_field :image, class: "file-upload"    
+-#     %p
+-#     = f.submit
