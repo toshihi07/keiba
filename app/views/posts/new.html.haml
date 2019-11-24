@@ -1,8 +1,6 @@
 = render "./layouts/header"
 
 .container
-  .race-group-top.bg-primary.text-white.mt-3.text-center
-    %h1 レース予想掲示板
   .race-group-main.mt-3
     .race-group-main__header
       %h1#post_count.pl-3 
@@ -28,3 +26,20 @@
               = post.body
             .post-index__footer.border-bottom
               いいね 返信 通報
+        %nav{"aria-label": "Page navigation example",class: "my-3"}
+          %ul.pagination.justify-content-center
+            %li.page-item
+              %a.page-link{"aria-label": "Previous",href: "#"}
+                %span{"aria-hidden" => "true"} «
+            %li.page-item
+              %a.page-link{:href => "#"} 1
+            %li.page-item
+              %a.page-link{:href => "#"} 2
+            %li.page-item
+              %a.page-link{:href => "#"} 3
+            %li.page-item
+              %a.page-link{"aria-label" => "Next", :href => "#"}
+                %span{"aria-hidden" => "true"} »
+
+          = paginate(@posts)
+    

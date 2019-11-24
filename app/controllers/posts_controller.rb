@@ -3,7 +3,7 @@ before_action :set_group
 
   def new
     @post = Post.new
-    @posts = Post.all.limit(10).order("created_at DESC")
+    @posts = Post.all.limit(10).order("created_at DESC").page(params[:page]).per(20)
     @posts_length = @race_group.posts
   end
 
