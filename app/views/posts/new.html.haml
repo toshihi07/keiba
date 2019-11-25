@@ -26,20 +26,4 @@
               = post.body
             .post-index__footer.border-bottom
               いいね 返信 通報
-        %nav{"aria-label": "Page navigation example",class: "my-3"}
-          %ul.pagination.justify-content-center
-            %li.page-item
-              %a.page-link{"aria-label": "Previous",href: "#"}
-                %span{"aria-hidden" => "true"} «
-            %li.page-item
-              %a.page-link{:href => "#"} 1
-            %li.page-item
-              %a.page-link{:href => "#"} 2
-            %li.page-item
-              %a.page-link{:href => "#"} 3
-            %li.page-item
-              %a.page-link{"aria-label" => "Next", :href => "#"}
-                %span{"aria-hidden" => "true"} »
-
-          = paginate(@posts)
-    
+        = paginate(@posts)
