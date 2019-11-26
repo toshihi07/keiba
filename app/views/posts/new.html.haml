@@ -9,7 +9,7 @@
       .race-group-container
         .text-center
           %h3.m-2 投稿する
-          = form_for @post, url:race_group_posts_path, id: "new_post" do |f|
+          = form_for @post, url:race_group_posts_path,class: "border-bottom", id: "new_post" do |f|
             %p 予想
             = f.text_field :prediction,class:"m-2"
             .article-body

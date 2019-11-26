@@ -16,7 +16,7 @@
       %tr
         %td= race_group.id
         %td
-          = link_to "#{race_group.name}",href: "http://#"
+          = link_to "#{race_group.name}","/race_groups/#{race_group.id}/posts/new"
         %td= race_group.year
         %td= race_group.created_at.strftime('%Y/%m/%d')
         %td= race_group.updated_at.strftime('%Y/%m/%d')
