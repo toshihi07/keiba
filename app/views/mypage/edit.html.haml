@@ -1,21 +1,43 @@
-#account-page.account-page
-  .account-page__inner.clearfix
-    .account-page__inner--left.account-page__header
-      %h2 Edit Account
-      %h5 アカウントの編集
-      = link_to "ログアウト", '#', class: 'btn'
-      = link_to "トップページに戻る", :back, class: 'btn'
-    .account-page__inner--right.user-form
-      = form_with model:@user, url:"/mypage/#{@user.id}" do |f|
-        .field
-          .field-label
-            = f.label :name
-          .field-input
-            = f.text_field :name, autofocus: true
-        .field
-          .field-label
-            = f.label :email
-          .field-input
-            = f.email_field :email
-        .actions
-          = f.submit "Update", class: 'btn'
+.container.text-center.registration-form.mt-5
+  .main-top.pt-3
+    %h1.border-bottom.pb-3 登録情報
+  = form_with(model:@user, url:"/mypage/#{@user.id}" ,method: :patch,local: true) do |f|
+    .nickname.pt-3
+      = f.label :nickname, "ニックネーム", class: "nickname__label "
+      %span.required
+        必須
+      .nickname__notation
+        - if @validate_error
+          - @user.errors[:nickname].each do |notation|
+            = notation
+      = f.text_field :nickname, class: 'textbox', placeholder: '例) 羽生まこ'
+    .image-form.field.pt-3
+      = f.label :avatar, "アバター画像選択", class: "avatar__label"
+      %span.required
+        任意
+      .file-box
+        = f.file_field :avatar,class:'avatar-box pl-4'
+    .email.pt-3
+      = f.label :email, "メールアドレス", class: "email__label "
+      %span.required
+        必須
+      .email__notation
+        - if @validate_error
+          - @user.errors[:email][1]
+        = f.email_field :email, class: 'textbox', placeholder: 'PC・携帯どちらでも可'
+    .password.pt-3
+      = f.label :password, "パスワード", class: "email__label "
+      %span.required
+        必須
+      .form-box__notation
+      -# - if @validate_error
+      -#   - @user.errors[:password][1], placeholder: '7文字以上'
+      = f.password_field :password, class: 'textbox',placeholder: '7文字以上'
+    .password.pt-3
+      = f.label :password_confirmation,"パスワード(確認)"
+      %span.required
+        必須
+      %br/
+      = f.password_field :password_confirmation, autocomplete: "new-password",class: 'textbox'
+    .create-action.pt-5.pb-3
+      = f.submit "この内容で変更する",class: "submit-button bg-success rounded text-white"

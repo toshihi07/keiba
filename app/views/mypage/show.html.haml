@@ -1,16 +1,34 @@
 = render "./layouts/header"
-- if current_user.try(:admin?)
-  .page-header
-    %h1 管理者マイページ
-    %p.admin_btn.col-xs-offset-1.col-xs-10.col-xs-offset-1= link_to "管理画面", "/admin"
-- else
-  .page-header
-    %h1
-      マイページ
-      %br/
-      %small
-        = link_to "編集ページへ",url:edit_mypage_path
-  %p
-    マイページでは学習進捗を確認できます。
-    %br/
-    自分の学習進捗に合わせてカリキュラムを選んでください。
+.container
+  .mypage.row
+    .card.col-8.mr-3.mt-5
+      .card-header.d-flex.justify-content-between
+        %h 11月25日(月) ようこそ、まこまこさん
+        .mypage-button
+          = link_to "マイページ編集",{type: "button", href: "/mypage/#{@user.id}/edit"}
+      .card-body
+        %h5.card-title Special title treatment
+        %p.card-text With supporting text below as a natural lead-in to additional content.
+    .card.col-3.mt-5{style: "max-width: 18rem;"}
+      .card-header お気に入り馬
+      .card-body.text-dark
+        %h5.card-title 登録されていません
+        %p.card-text 
+    .card.col-8.mr-3.mt-5.p-0
+      .card-header.row
+        .col-6 今年の収支
+        .col-6 今月の収支
+      .card-body
+        %h5.card-title Special title treatment
+        %p.card-text With supporting text below as a natural lead-in to additional content.
+        %a.btn.btn-primary{:href => "#"} Go somewhere
+    .card.col-3.mt-5{style: "max-width: 18rem;"}
+      .card-header 収支分析
+      .card-body.text-dark
+        %h5.card-title 登録されていません
+        %p.card-text 
+
+  - if current_user.try(:admin?)
+    .page-header
+      %h1 管理者マイページ
+      %p.admin_btn.col-xs-offset-1.col-xs-10.col-xs-offset-1= link_to "管理画面", "/admin"
