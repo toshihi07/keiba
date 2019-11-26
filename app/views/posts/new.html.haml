@@ -9,7 +9,7 @@
       .race-group-container
         .text-center
           %h3.m-2 投稿する
-          = form_for @post, url:race_group_posts_path,class: "border-bottom", id: "new_post" do |f|
+          = form_for @post, url:race_group_posts_path,id: "new_post" do |f|
             %p 予想
             = f.text_field :prediction,class:"m-2"
             .article-body
@@ -17,11 +17,14 @@
             = f.text_area :body,class:"body-input my-2",placeholder:"コメントする"
             = f.submit "投稿する", class: 'button'
         .post-index.mt-5
-          - @posts.each do |post|
-            .post-index__user-data
-              = "#{post.user.nickname}さん"
-            .post-index__prediction
-              = post.prediction
+          - @posts.each_with_index.reverse_each do |post, i|
+            .post-index__user-data.d-flex
+              %p 
+                = "[#{i +1}]"
+              %p 
+                = "#{post.user.nickname}さん"
+              %p 
+                = "予想:#{post.prediction}"
             .post-index__body
               = post.body
             .post-index__footer.border-bottom
