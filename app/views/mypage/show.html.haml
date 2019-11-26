@@ -7,7 +7,7 @@
         .mypage-button
           = link_to "マイページ編集",{type: "button", href: "/mypage/#{@user.id}/edit"}
       .card-body
-        %h5.card-title Special title treatment
+        %h5.card-title 総収支
         %p.card-text With supporting text below as a natural lead-in to additional content.
     .card.col-3.mt-5{style: "max-width: 18rem;"}
       .card-header お気に入り馬
@@ -15,18 +15,24 @@
         %h5.card-title 登録されていません
         %p.card-text 
     .card.col-8.mr-3.mt-5.p-0
-      .card-header.row
-        .col-6 今年の収支
-        .col-6 今月の収支
+      .card-header.d-flex.justify-content-between
+        %p 最近の購入
+        %p 一覧
       .card-body
-        %h5.card-title Special title treatment
-        %p.card-text With supporting text below as a natural lead-in to additional content.
-        %a.btn.btn-primary{:href => "#"} Go somewhere
+        .betting-card.border
+          %h5.card-title 2019年12月25日 11R 馬連
+          %p.card-text 投資1000円、回収0円
+        .betting-card.border.mt-3
+          %h5.card-title 2019年12月25日 11R 馬連
+          %p.card-text 投資1000円、回収0円
     .card.col-3.mt-5{style: "max-width: 18rem;"}
       .card-header 収支分析
       .card-body.text-dark
-        %h5.card-title 登録されていません
-        %p.card-text 
+        %h5.card-title 回収率
+        %h5.card-title 年別収支
+        %h5.card-title 月別収支
+        %h5.card-title 競馬場別収支
+        %h5.card-title 馬券種別収支
 
   - if current_user.try(:admin?)
     .page-header
