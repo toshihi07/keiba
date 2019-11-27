@@ -13,11 +13,13 @@
       .rece_name.pt-3
         = f.text_field :race_name,class:"text-box pl-2 ",placeholder: 'レース名'
       .category.pt-3
-        = f.select :category_id,Category.all.collect{|p|[p.name,p.id]}, {prompt: "式別"}, class:"select-box"
-      .horse_number.pt-3
-        = f.select :horse_number,HorseNumber.all.collect{|p|[p.number,p.id]}, {prompt: "馬番"}, class:"select-box"
+        = f.select :category,@categories.collect{|p|[p.name,p.id]}, {prompt: "式別"}, class:"select-box"
+      .category_children
+      .horse_number_1.pt-3
+      .horse_number_2.pt-3
       .invetment.pt-3
         = f.text_field :investment ,class: 'text-box pl-2',placeholder: '金額'
+      .combination.pt-3
       .inner-box__center.py-3
         = f.submit "クリア", class: "betting_button mx-2"
         = f.submit "登録", class: "betting_button mx-2"
