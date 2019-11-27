@@ -7,7 +7,14 @@ Rails.application.routes.draw do
   root 'top#index'
   resources :mypage, only: [:show,:edit,:update]
   resources :members, only: [:new, :create] 
-  resources :bettings, only: [:new, :create]
+  resources :bettings, only: [:new, :create] do
+    collection do
+      get 'category_children', defaults: {format:'json'}
+    end
+    member do
+      get 'result'
+    end
+  end
   resources :articles, only: [:new,:create,:index,:show] 
   resources :race_groups, only: [:index,:show,:new, :create, :edit, :update] do
     resources :posts, only: [:new,:create]

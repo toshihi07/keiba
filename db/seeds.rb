@@ -51,8 +51,8 @@ quinella_3= quinella.children.create(name: "ながし")
 exacta = Category.create(name: "馬単")
 exacta_1= exacta.children.create(name: "通常")
 exacta_2= exacta.children.create(name: "ボックス")
-exacta_3= exacta.children.create(name: "1着流し")
-exacta_3= exacta.children.create(name: "2着流し")
+exacta_3= exacta.children.create(name: "1着ながし")
+exacta_3= exacta.children.create(name: "2着ながし")
 
 # ワイド
 quinella_place = Category.create(name: "ワイド")

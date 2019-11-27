@@ -15,10 +15,10 @@ $(function() {
     .done(function(data){
       buildHTML(data);
     })
+    .fail(function() {
+      window.alert('正しい結果を得られませんでした。');
+    });
   })
-  .fail(function() {
-    window.alert('正しい結果を得られませんでした。');
-  });
   function buildHTML(data){
     html_count = `<h1 class='pl-3'>
     ${data.name}(${data.year})掲示板/投稿数(${data.count}件)
