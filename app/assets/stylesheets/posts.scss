@@ -11,3 +11,19 @@
     font-size: 15px;
   }
 }
+.race-group-main{
+  border: 3px solid #6EA7DD;
+  .button{
+    width: 27%;
+  }
+  &__header{
+    background: linear-gradient(to bottom, rgb(162, 200, 233), rgb(88, 153, 219));
+    height: 47px;
+    h1{
+      line-height:47px;
+    }
+  }
+  .post-index__user-data{
+    border-top: 1px solid #6EA7DD;
+  }
+}

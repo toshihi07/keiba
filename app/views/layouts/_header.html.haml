@@ -12,7 +12,7 @@
       - else
         .log_in
           = link_to"ログアウト", destroy_user_session_path, method: :delete, class:"logout"
-.nav-border.bg-gradient-primary
+.nav-border
   .nav-inner
     %ul.nav
       %li.nav-item
@@ -24,7 +24,5 @@
       %li.nav-iem
         %a.nav-link{href: new_betting_path} 収支管理ツール
       %li.nav-item.right
-        -# = link_to "マイページ", mypage_path(current_user.id),class: "nav-link"
-
-        
+        -# = link_to "マイページ", mypage_path(current_user.id),class: "nav-link"        
 

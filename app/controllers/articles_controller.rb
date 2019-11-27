@@ -7,7 +7,6 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @article = Article.find(params[:id])
   end
 
   def new
@@ -27,7 +26,7 @@ end
   private
   
   def set_article
-    @item = Article.find(params[:id])
+    @article = Article.find(params[:id])
   end
   
   def article_params

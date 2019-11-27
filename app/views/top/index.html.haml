@@ -62,17 +62,17 @@
           %p.mt-2  11月16日(土) 東京 芝1800m
         = image_tag"armond.jpg",class:"align-self-center img-fluid"
     .border-bottom.mt-5.pb-2 
-      %h3 管理人予想
-    .card-deck.mb-5
-      .card-list.row.pt-3
-        - @articles.each do |article|
-          .card.col-6.p-0
-            .card-image
-              =image_tag article.article_images[0].image.url,class:"card-img-top"
-            .card-body
-              %h2.card-title
+      %h3 今週の予想
+    .article-deck.mb-5
+      .article-list.pt-3
+        - @articles.last(2).each do |article|
+          .article.mx-3.mb-3
+            .article-image
+              =image_tag article.article_images[0].image.url,class:"article-img-top"
+            .article-body
+              %h2.article-title
                 = article.title
-              %p.card-text
+              %p.article-text
                 = article.body.truncate(100)
               %a.btn.btn-primary{href: "/articles/#{article.id}"} 記事を読む
           

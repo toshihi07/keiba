@@ -25,17 +25,23 @@ $(function() {
     </h1>`
     $('#post_count').empty();
     $('#post_count').prepend(html_count);
-    html = `<div class='post-index__user-data'>
-              ${data.nickname}
-            </div>
-            <div class='post-index__prediction'>
-              ${data.prediction}
+    html = `<div class='post-index__user-data d-flex pt-4'>
+              <p>
+                [${data.count}]
+              </p>
+              <p class='px-3'>
+                ${data.nickname}
+              </p>
+              <p class='px-3'>
+                予想:${data.prediction}
+              </p>
             </div>
             <div class='post-index__body'>
               ${data.body}
             </div>
-            <div class='post-index__footer border-bottom'>
-              いいね 返信 通報
+            <div class='post-index__footer d-flex'>
+              <p>いいね</p>
+              <p class='px-3'>通報</p>
             </div>`
     $('.post-index').prepend(html);
     $('#post_prediction').val('');

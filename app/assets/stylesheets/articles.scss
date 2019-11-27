@@ -1,3 +1,29 @@
 // Place all the styles related to the articles controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.article_index{
+  .article-deck{
+    .article-list{
+      display: flex;
+      flex-wrap: wrap;
+      .article{
+        width: 45%;
+        border: 1px solid #cccc;
+        background-color: #F5f5f5;
+      }
+    }
+  }
+  h2{
+    font-size: 1.2rem;
+  }
+  p{
+    font-size: 1rem;
+  }
+  .article-img-top{
+    height: 180px;
+    width: 100%;
+  }
+  .article-body{
+  background-color: #F5f5f5;
+  }
+}
