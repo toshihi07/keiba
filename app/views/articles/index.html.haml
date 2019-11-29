@@ -1,50 +1,82 @@
 = render "./layouts/header"
-.container.article_index
+.container.article_index.d-flex.justify-start
   .article-deck.mb-5
-    .article-list.pt-3
+    .article-list.pt-5
       - @articles.each do |article|
-        .article.mx-3.mb-3
+        .article.mr-3.mb-3
           .article-image
             =image_tag article.article_images[0].image.url,class:"article-img-top"
           .article-body
+            %p.article-text.p-2
+              = article.created_at.strftime("%Y年%-m月%-d日")
             %h2.article-title.p-2
               = article.title
-            %p.article-text
+            %p.article-text.p-2
               = article.body.truncate(100)
             %a.btn-sm.btn-primary{href: "/articles/#{article.id}"} 記事を読む
+      = paginate(@articles)
+  .side_bar 
+    .recent-article.card.pt-5
+      %ul.list-group
+        %li.list-group-item.active 最新の投稿
+        %li.list-group-item Dapibus ac facilisis in
+        %li.list-group-item Morbi leo risus
+        %li.list-group-item Porta ac consectetur ac
+        %li.list-group-item Vestibulum at eros
+        %li.list-group-item Porta ac consectetur ac
+    .recent-comments.card.pt-5
+      %ul.list-group
+        %li.list-group-item.active 最新のコメント
+        %li.list-group-item 
+        %li.list-group-item
+        %li.list-group-item 
+        %li.list-group-item 
+        %li.list-group-item 
+    .archives.card.pt-5
+      %ul.list-group
+        %li.list-group-item.active アーカイブ
+        %li.list-group-item Dapibus ac facilisis in
+        %li.list-group-item Morbi leo risus
+        %li.list-group-item Porta ac consectetur ac
+        %li.list-group-item Vestibulum at eros
+        %li.list-group-item Dapibus ac facilisis in
+        %li.list-group-item Morbi leo risus
+        %li.list-group-item Porta ac consectetur ac
+        %li.list-group-item Vestibulum at eros
+        
 
-.container
-  .card-deck.mb-5
-    .card-list.row.pt-3
-      - @articles.each do |article|
-        .card.col-6.p-0
-          .card-image
-            =image_tag article.article_images[0].image.url,class:"card-img-top"
-          .card-body
-            %h2.card-title
-              = article.title
-            %p.card-text
-              = article.body.truncate(100)
-            %a.btn.btn-primary{href: "/articles/#{article.id}"} 記事を読む
+-# .container
+-#   .card-deck.mb-5
+-#     .card-list.row.pt-3
+-#       - @articles.each do |article|
+-#         .card.col-6.p-0
+-#           .card-image
+-#             =image_tag article.article_images[0].image.url,class:"card-img-top"
+-#           .card-body
+-#             %h2.card-title
+-#               = article.title
+-#             %p.card-text
+-#               = article.body.truncate(100)
+-#             %a.btn.btn-primary{href: "/articles/#{article.id}"} 記事を読む
 
-.d-flex.align-items-center.mt-3
-  %h1 投稿一覧
-%table.table.table-bordered.border-primary.table-hover.table-sm.articles_table
-  %thead
-    %tr
-      %th{scope: "col", style: "width: 40px"} No.
-      %th{scope: "col", style: "width: 700px"} 投稿タイトル
-      %th{scope: "col"} 投稿者
-      %th{scope: "col"} 投稿日
-      %th{scope: "col"} 更新日時
-  %tbody
-    　　　
-    / 追加
-    - @articles.each do |article|
-      %tr
-        %th= article.id
-        %td
-          = link_to "#{article.title}","/articles/#{article.id}"
-        %td= article.user.nickname
-        %td= article.created_at.strftime('%Y/%m/%d')
-        %td= article.updated_at.strftime('%Y/%m/%d')
+-# .d-flex.align-items-center.mt-3
+-#   %h1 投稿一覧
+-# %table.table.table-bordered.border-primary.table-hover.table-sm.articles_table
+-#   %thead
+-#     %tr
+-#       %th{scope: "col", style: "width: 40px"} No.
+-#       %th{scope: "col", style: "width: 700px"} 投稿タイトル
+-#       %th{scope: "col"} 投稿者
+-#       %th{scope: "col"} 投稿日
+-#       %th{scope: "col"} 更新日時
+-#   %tbody
+-#     　　　
+-#     / 追加
+-#     - @articles.each do |article|
+-#       %tr
+-#         %th= article.id
+-#         %td
+-#           = link_to "#{article.title}","/articles/#{article.id}"
+-#         %td= article.user.nickname
+-#         %td= article.created_at.strftime('%Y/%m/%d')
+-#         %td= article.updated_at.strftime('%Y/%m/%d')

@@ -7,15 +7,17 @@
         = "#{@race_group.name}(#{@race_group.year})掲示板/投稿数(#{@posts_length.count}件)"
     .border
       .race-group-container
-        .text-center
-          %h3.m-2 投稿する
+        .post-button.text-center
+          .post_form.button.mt-3
+            %p.open-button.p-0 投稿する
+          %h3.m-2
           = form_for @post, url:race_group_posts_path,id: "new_post" do |f|
             %p 予想
             = f.text_field :prediction,class:"m-2"
             .article-body
             %p 本文
-            = f.text_area :body,class:"body-input my-2",placeholder:"コメントする"
-            = f.submit "投稿する", class: 'button'
+            = f.text_area :body,class:"body-input mt-2 mb-3",placeholder:"コメントする"
+            = f.submit "投稿する", class: 'post_button'
         .post-index.mt-5
           - @posts.each_with_index.reverse_each do |post, i|
             .post-index__user-data.d-flex.pt-4
@@ -25,6 +27,8 @@
                 = "#{post.user.nickname}さん"
               %p.px-3  
                 = "予想:#{post.prediction}"
+              %p.px-3  
+                = post.created_at.strftime("%Y/%-m/%-d#{" "}%X")
             .post-index__body
               = post.body
             .post-index__footer.d-flex

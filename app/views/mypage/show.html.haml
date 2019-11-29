@@ -1,11 +1,11 @@
 = render "./layouts/header"
 .container
   .mypage.row
-    .card.col-8.mr-3.mt-5
+    .card.col-8.mr-3.mt-5.p-0
       .card-header.d-flex.justify-content-between
         %h 11月25日(月) ようこそ、まこまこさん
         .mypage-button
-          = link_to "マイページ編集",{type: "button", href: "/mypage/#{@user.id}/edit"}
+          = link_to "マイページ編集","/mypage/#{@user.id}/edit"
       .card-body
         %h5.card-title
           = "総収支 #{@total_investment}円"
@@ -15,7 +15,10 @@
           = "トータル収支 #{@total_result - @total_investment}円"
         %h5.card-title
           = "回収率 #{(@total_result.to_f / @total_investment.to_f * 100).round(1)}%"
-    .card.col-3.mt-5{style: "max-width: 18rem;"}
+        - if current_user.try(:admin?)
+          .page-header
+            %p.admin_btn.col-xs-offset-1.col-xs-10.col-xs-offset-1= link_to "管理画面", "/admin"
+    .card.col-3.mt-5.p-0{style: "max-width: 18rem;"}
       .card-header お気に入り馬
       .card-body.text-dark
         %h5.card-title 登録されていません
@@ -44,7 +47,7 @@
                 %input{type: 'number'}
                 .post-result{"data-id": "#{betting.id}"}
                   登録する
-    .card.col-3.mt-5{style: "max-width: 18rem;"}
+    .card.col-3.mt-5.p-0{style: "max-width: 18rem;"}
       .card-header 収支分析
       .card-body.text-dark
         %h5.card-title
@@ -53,7 +56,3 @@
           = "月別収支 #{@total_month_result - @total_month_investment}円"
         %h5.card-title 競馬場別収支
         %h5.card-title 馬券種別収支
-  - if current_user.try(:admin?)
-    .page-header
-      %h1 管理者マイページ
-      %p.admin_btn.col-xs-offset-1.col-xs-10.col-xs-offset-1= link_to "管理画面", "/admin"

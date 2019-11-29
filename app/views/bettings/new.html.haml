@@ -1,5 +1,5 @@
 = render "./layouts/header"
-.container.text-center.registration-form.mt-5
+.betting-container.text-center.registration-form.mt-5
   .betting-top.pt-3
     %h1.border-bottom.pb-3 馬券情報入力
   .betting-main
@@ -11,7 +11,7 @@
       .race_number.pt-3
         = f.select :race_number_id,RaceNumber.all.collect{|p|[p.number,p.id]}, {prompt: "レース番号"}, class:"select-box"
       .rece_name.pt-3
-        = f.text_field :race_name,class:"text-box pl-2 ",placeholder: 'レース名'
+        = f.text_field :race_name,class:"text-box pl-2 ",placeholder: 'レース名(任意)'
       .category.pt-3
         = f.select :category,@categories.collect{|p|[p.name,p.id]}, {prompt: "式別"}, class:"select-box"
       .category_children

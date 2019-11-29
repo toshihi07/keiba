@@ -1,4 +1,7 @@
 $(function() {
+  $('.post_form').on('click', function(){
+    // console.log("あ");
+    $('.new_post').fadeIn();
   $('#new_post').on('submit', function(e){
     e.preventDefault();
     console.log(this);
