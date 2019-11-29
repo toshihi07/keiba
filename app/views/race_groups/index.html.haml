@@ -1,24 +1,23 @@
 = render "./layouts/header"
-.d-flex.align-items-center.mt-3
-  %h1 投稿一覧
-%table.table.table-bordered.border-primary.table-hover.table-sm.articles_table
-  %thead
-    %tr
-      %th{scope: "col", style: "width: 40px"} No.
-      %th{scope: "col", style: "width: 700px"} レース名
-      %th{scope: "col"} 最終投稿者
-      %th{scope: "col"} 掲示板作成日
-      %th{scope: "col"} 最新投稿日時
-  %tbody
-    　　　
-    / 追加
-    - @race_groups.each do |race_group|
+.container.d-flex.align-items-center.mt-5
+  %table.table.table-bordered.border-primary.table-hover.table-sm.articles_table
+    %thead
       %tr
-        %td= race_group.id
-        %td
-          = link_to "#{race_group.name}","/race_groups/#{race_group.id}/posts/new"
-        %td= race_group.posts.last.user.nickname
-        %td= race_group.created_at.strftime('%Y/%m/%d')
-        %td= race_group.posts.last.updated_at.strftime("%Y/%-m/%-d#{" "}%H:%M")
+        %th{scope: "col"} No.
+        %th{scope: "col"} レース名
+        %th{scope: "col"} 最終投稿者
+        %th{scope: "col"} 掲示板作成日
+        %th{scope: "col"} 最新投稿日時
+    %tbody
+      　　　
+      / 追加
+      - @race_groups.each do |race_group|
+        %tr
+          %td= race_group.id
+          %td
+            = link_to "#{race_group.name}","/race_groups/#{race_group.id}/posts/new"
+          %td= race_group.posts.last.user.nickname
+          %td= race_group.created_at.strftime('%Y/%m/%d')
+          %td= race_group.posts.last.updated_at.strftime("%Y/%-m/%-d#{" "}%H:%M")
 
 

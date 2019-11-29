@@ -1,7 +1,9 @@
 $(function() {
-  $('.post_form').on('click', function(){
+  $('.open-button').on('click', function(){
     // console.log("あ");
-    $('.new_post').fadeIn();
+    $('.post_open').addClass("d-none");
+    $('.post_form').removeClass("d-none");
+  })
   $('#new_post').on('submit', function(e){
     e.preventDefault();
     console.log(this);

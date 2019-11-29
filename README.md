@@ -1,26 +1,52 @@
-# README
-
-
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# 競馬収支管理アプリ [UMAUMA]url:(http://52.68.193.142/)
+## アプリ概要
+競馬の多機能収支管理アプリです。<br>
+馬券の購入の記録。<br>
+また、商品検索機能を利用すれば、楽天市場から商品の購入ができ、わざわざ買い物に出かける手間を省くことができるようになります。<br>
+商品検索機能は楽天市場のapiを利用して実装しました。
+## 作成した経緯
+最近競馬で全く当たらないので、どれくらい負けているか記録を取ろうと考えたためです。<br>
+2人の共通事項として、日用品(シャンプー、歯磨き...etc)がいざという時にないことがあって困っているということを知りました。<br>
+現在通っているスクールの女性スタッフにも確認したところ、共感してもらえたため、同じ悩みを抱えている人が多いのではないかと感じました。<br>
+その際、日用品が管理でき、足りなそうになったらその場で購入までできるアプリケーションがあれば便利ではないかと感じ作成することにしました。<br>
+## アプリのリンク
+[UMAUMA](http://52.68.193.142/)
+## アプリ概要)<br>
+emailとpasswordを入力することで、ログインできます。<br>
+[テスト用アカウント]
+email:    test@gmail.com<br>
+password: 1111111<br>
+## 機能一覧
+- 新規登録画面<br>
+![新規登録画面](https://user-images.githubusercontent.com/54973235/69794265-4a618000-120d-11ea-887b-7dbbfeb4b287.png(215 kB)
+https://user-images.githubusercontent.com/54973235/69794265-4a618000-120d-11ea-887b-7dbbfeb4b287.png
+)<br>
+- TOP画面<br>
+![TOP画面](daily_top.png)<br>
+購入した商品名、商品のカテゴリー、購入日が一覧表示されます。<br>
+また、商品の編集削除も可能となっています。
+- 商品登録機能<br>
+![商品登録機能](商品登録機能.png)<br>
+商品の登録ができる画面です。
+- 商品検索機能<br>
+![商品検索機能](https://user-images.githubusercontent.com/54973235/69853242-ab4e8e00-12c9-11ea-8580-8a07a90fbec1.gif(812 kB)
+https://user-images.githubusercontent.com/54973235/69853242-ab4e8e00-12c9-11ea-8580-8a07a90fbec1.gif
+)<br>
+楽天市場のAPIを利用し、検索欄から商品検索を行えるようにしました。<br>
+また、インクリメンタルサーチを実装することでUXの向上に努めました。
+## 使用技術
+- 使用言語<br>
+haml/scss/javascript/Ruby(2.5.1)
+- フレームワーク<br>
+Ruby on rails(5.2.3)<br>
+- ライブラリ<br>
+jQuery<br>
+- インフラストラクチャー<br>
+AWS(EC2インスタンス)<br>
+自動デプロイツールCapistranoの導入<br>
+- Webサーバー<br>
+Nginx<br>
+- アプリケションサーバ<br>
+Unicorn<br>
+- データベースサーバ<br>
+MySQL<br>

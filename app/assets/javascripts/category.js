@@ -238,4 +238,14 @@ document.addEventListener("turbolinks:load", function () {
       }
     })
   });
+  $('form').on('submit', function (e) {
+    e.preventDefault()
+    var category_children = $('#bettings_category_id option:selected').text();
+    if (category_children != "通常") {
+      var investment = $('#bettings_investment').val()
+      var combination = $('.combination').text().replace(/[^0-9]/g, '')
+      $('#bettings_investment').val(investment * combination)
+    }
+    this.submit()
+  })
 })

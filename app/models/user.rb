@@ -10,8 +10,22 @@ class User < ApplicationRecord
   # mount_uploader :avatar, AvatarUploader
   has_one_attached :avatar
 
-  validates :email, presence: true
-  validates :password, presence: true
-  validates :nickname, presence: true
-  validates :avatar, presence: true
+  validates :nickname,
+  presence: {
+    message: "ニックネームを入力してください"
+  }
+  validates :email,
+    presence: {
+      message: "メールアドレスを入力してください"
+    }
+  validates :email,
+    uniqueness: {
+      message: "既にアカウントが存在します"
+    }
+  validates :password,
+  presence: true,
+  length: {
+    minimum: 7,
+    too_short: "パスワードは7文字以上です"
+  }
 end

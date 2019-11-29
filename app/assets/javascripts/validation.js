@@ -5,4 +5,10 @@ $(document).on('turbolinks:load', function() {
       return false
     }
   })
+  $('betting_button').on('click', function(){
+    if ($('#post_prediction').val() == '' || $('#post_body').val() == '' ){
+      alert('入力してください')
+      return false
+    }
+  })
 })
