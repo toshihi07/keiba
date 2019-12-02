@@ -13,5 +13,5 @@ CarrierWave.configure do |config|
   }
 
   config.fog_directory  = 'shinmachi'
-  config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/shinmachi'
+  config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/ここにバケット名を入れます'
 end

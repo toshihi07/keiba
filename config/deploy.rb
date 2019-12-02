@@ -37,7 +37,7 @@ set :keep_releases, 5
 set :linked_files, %w{ config/secrets.yml }
 
 # secrets.yml追加記述
-set :linked_files, fetch(:linked_files, []).push("config/master.key")
+# set :linked_files, fetch(:linked_files, []).push("config/master.key")
 
 # 元々記述されていた after 「'deploy:publishing', 'deploy:restart'」以下を削除して、次のように書き換え
 after 'deploy:publishing', 'deploy:restart'
