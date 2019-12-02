@@ -8,12 +8,10 @@ before_action :set_group
   end
 
   def create
-    # binding.pry
     @post = Post.new(post_params)
     @posts_length = @race_group.posts
     respond_to do |format|
       if @post.save
-      # format.html { redirect_to "/race_groups/#{@race_group.id}/posts/new"}
       format.json 
         end
       else

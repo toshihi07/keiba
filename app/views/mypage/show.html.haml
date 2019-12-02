@@ -13,8 +13,9 @@
           = "総回収 #{@total_result}円"
         %h5.card-title
           = "トータル収支 #{@total_result - @total_investment}円"
-        %h5.card-title
-          = "回収率 #{(@total_result.to_f / @total_investment.to_f * 100).round(1)}%"
+        - unless @total_investment == 0
+          %h5.card-title
+            = "回収率 #{(@total_result.to_f / @total_investment.to_f * 100).round(1)}%"
         - if current_user.try(:admin?)
           .page-header
             %p.admin_btn.col-xs-offset-1.col-xs-10.col-xs-offset-1= link_to "管理画面", "/admin"
@@ -31,7 +32,14 @@
         - @bettings.each do |betting|
           .betting-card.border.mt-3
             %h5.card-title
-              = "#{betting.when.strftime("%Y年%m月%d日")} / #{betting.race_number.number} / #{betting.category.parent.name}"
+              - if betting.category.name == ("ながし" || "1着ながし" )
+                = "#{betting.when.strftime("%Y年%m月%d日")} / #{betting.race_number.number} / #{betting.category.parent.name} / #{betting.category.name} / #{betting.horse_number.first} / #{betting.horse_number} "
+              - elsif betting.category.name == "ボックス"
+                = "#{betting.when.strftime("%Y年%m月%d日")} / #{betting.race_number.number} / #{betting.category.parent.name} / #{betting.category.name} / #{betting.horse_number}"
+              - elsif betting.category.name == "2着ながし"
+                = "#{betting.when.strftime("%Y年%m月%d日")} / #{betting.race_number.number} / #{betting.category.parent.name} / #{betting.category.name} /#{betting.horse_number} / #{betting.horse_number.first}"
+              - else 
+                = "#{betting.when.strftime("%Y年%m月%d日")} / #{betting.race_number.number} / #{betting.category.parent.name} /#{betting.horse_number.first} "
             - if betting.result
               .card-text
                 = "投資#{betting.investment}円 / 回収#{betting.result}円"

@@ -1,4 +1,4 @@
-document.addEventListener("turbolinks:load", function () {
+$(function () {
   $(document).on('change', '#bettings_category', function (e) {
     var category = $('#bettings_category option:selected').val();
     e.preventDefault
@@ -245,6 +245,10 @@ document.addEventListener("turbolinks:load", function () {
       var investment = $('#bettings_investment').val()
       var combination = $('.combination').text().replace(/[^0-9]/g, '')
       $('#bettings_investment').val(investment * combination)
+    }
+    if ($('#bettings_race_course_id').val() == '' || $('#bettings_race_number_id').val() == ''|| $('#bettings_category_id').val() == '' || $('#bettings_horse_number').val() == '' || $('#bettings_investment').val() == '' ) {
+      alert('入力してください')
+      return false
     }
     this.submit()
   })

@@ -1,6 +1,5 @@
 $(function() {
   $('.open-button').on('click', function(){
-    // console.log("あ");
     $('.post_open').addClass("d-none");
     $('.post_form').removeClass("d-none");
   })
@@ -39,6 +38,9 @@ $(function() {
               </p>
               <p class='px-3'>
                 予想:${data.prediction}
+              </p>
+              <p class='px-3'>
+                ${data.created_at}
               </p>
             </div>
             <div class='post-index__body'>
