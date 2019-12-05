@@ -35,7 +35,7 @@ document.addEventListener("turbolinks:load", function () {
                 [${data.count}]
               </p>
               <p class='px-3'>
-                ${data.nickname}
+                ${data.nickname}さん
               </p>
               <p class='px-3'>
                 予想:${data.prediction}
