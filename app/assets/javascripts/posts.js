@@ -1,12 +1,13 @@
-$(function() {
-  $('.open-button').on('click', function(){
+document.addEventListener("turbolinks:load", function () {
+    $('.open-button').on('click', function(){
     $('.post_open').addClass("d-none");
     $('.post_form').removeClass("d-none");
   })
   $('#new_post').on('submit', function(e){
     e.preventDefault();
-    console.log(this);
     var formData = new FormData(this);
+
+  
     var url = $(this).attr('action');
     $.ajax({
       url: url,
