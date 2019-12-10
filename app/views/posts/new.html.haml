@@ -20,7 +20,7 @@
               = f.submit "投稿する", class: 'post_button'
         .post-index.mt-5
           - @posts.each_with_index.reverse_each do |post, i|
-            .post-index__user-data.d-flex.pt-4
+            .post-index__user-data.d-flex.pt-4.my-2
               %p
                 = "[#{i +1}]"
               %p.px-3 
@@ -29,9 +29,12 @@
                 = "予想:#{post.prediction}"
               %p.px-3  
                 = post.created_at.strftime("%Y/%-m/%-d#{" "}%X")
-            .post-index__body
+            .post-index__body.my-2
               = post.body
-            .post-index__footer.d-flex
-              %p いいね 
-              %p.px-3 通報
-        = paginate(@posts)
+            .post-index__footer.d-flex.my-2
+              %h3.iine.p-1
+                %i.fa.fa-thumbs-up{id: "#{post.id}"}
+                = link_to "いいね！","race_groups/#{@race_group.id}/posts/#{post.id}/likes",method: :post 
+                %h3.iine_count.mx-2.px-2.pt-1
+                  = "#{post.likes.count}"
+            = paginate(@posts)

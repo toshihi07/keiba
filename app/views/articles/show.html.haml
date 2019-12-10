@@ -1,40 +1,60 @@
 = render "./layouts/header"
 .container.d-flex
-  .article-main
-    .article-header
-      %h1
-        = @article.title 
-    .article-body
-      %h5.p-3
-        = fa_icon 'edit'
-        = @article.created_at.strftime("%Y/%-m/%-d#{" "}%H:%M")
-      %p
-        = @article.body
+  .article-left
+    .article-content
+      .article-header
+        %h1
+          = @article.title 
+      .article-body
+        %h5.py-3
+          = fa_icon 'edit'
+          = @article.created_at.strftime("%Y/%-m/%-d#{" "}%H:%M")
+        %p
+          = @article.body
+    .comment-content
+      .discussion.mb-3
+        %h1 ディスカッション
+      .comments.my-2.mb-2
+        %h3
+          = fa_icon 'comments'
+          コメント一覧
+        - if @article_comments.length == 0
+          %h3 この記事へのコメントはまだありません。
+        - else 
+          - @article_comments.each do |comment|
+            %div.my-2
+              = "#{comment.user.nickname}より"
+              = comment.created_at.strftime("%Y/%-m/%-d#{" "}%H:%M")
+            %div.my-2
+              = comment.content
+              %hr/
+      .comment.my-2.mb-2
+        %h3.my-2
+          = fa_icon 'comment'
+          コメントをどうぞ
+        = form_for [@article, @comment] do |f|
+          = f.text_area :content,id:"comment",class:"my-2"
+          %br/
+          = f.submit 'コメントを送信',class:"btn btn-primary"
   .side_bar 
     .recent-article.card.pt-5
       %ul.list-group
-        %li.list-group-item.active 最新の投稿
-        %li.list-group-item 
-        %li.list-group-item 
-        %li.list-group-item 
-        %li.list-group-item 
-        %li.list-group-item 
+        %li.list-group-item.active 
+          人気記事
     .recent-comments.card.pt-5
       %ul.list-group
-        %li.list-group-item.active 最新のコメント
-        %li.list-group-item 
-        %li.list-group-item
-        %li.list-group-item 
-        %li.list-group-item 
-        %li.list-group-item 
+        %li.list-group-item.active
+          最新のコメント
+        - @comments.each do |comment|
+          %li.list-group-item
+            = "#{comment.article.title}に#{comment.user.nickname}より"
     .archives.card.pt-5
       %ul.list-group
         %li.list-group-item.active アーカイブ
-        %li.list-group-item 
-        %li.list-group-item 
-        %li.list-group-item 
-        %li.list-group-item 
-        %li.list-group-item 
-        %li.list-group-item 
-        %li.list-group-item
-        %li.list-group-item 
+        %li.list-group-item 2019年12月
+        %li.list-group-item 2019年11月
+        %li.list-group-item 2019年10月
+        %li.list-group-item 2019年9月
+        %li.list-group-item 2019年8月
+        %li.list-group-item 2019年7月
+
