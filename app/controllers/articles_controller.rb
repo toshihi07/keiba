@@ -4,9 +4,14 @@ class ArticlesController < ApplicationController
 
   def index
     @articles = Article.all.includes(:article_images).order("created_at DESC").page(params[:page]).per(8)
+    @comments = Comment.all.order("created_at DESC").last(5)
   end
 
   def show
+    @comments = Comment.all.order("created_at DESC").last(5)
+    @article_comments = @article.comments.includes(:user).order("created_at DESC")
+    @comment = Comment.new
+    # @comment.user_id = current_user.id
   end
 
   def new
@@ -22,6 +27,15 @@ class ArticlesController < ApplicationController
       redirect_to '/articles/new'
   end
 end
+
+  def archives
+# 条件を年と月に設定してグループ化し、記事数をカウント
+    archives = Post.count(:all,:group => "strftime('%Y-%m', posts.created_at)")
+# ソートする
+    archives.sort! {|a, b| a[0] <=> b[0]}
+# 年と月を分離する
+    @archives = Post.find(:all,:select => "DISTINCT strftime('%Y-%m', posts.published_at) AS published_at")  
+  end
   
   private
   
