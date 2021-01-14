@@ -80,7 +80,7 @@ gem 'ancestry'
 gem "carrierwave"
 gem 'fog-aws'
 gem 'mini_magick'
-gem 'rails_admin', '~> 2.0.0.beta'
+gem 'rails_admin', '~> 2.0.2'
 gem 'cancancan'
 gem 'kaminari'
 gem 'google-api-client'
